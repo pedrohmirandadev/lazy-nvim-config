@@ -16,3 +16,13 @@ vim.keymap.set({ "n", "v" }, "<F11>", function() require("dap").step_into() end,
 vim.keymap.set({ "n" }, "<cr>", "zz", { desc = "Centralize screen" })
 
 vim.keymap.set({ "t" }, "<esc><esc>", "<C-\\><C-n>", { desc = "Quite terminal mode" })
+
+-- vim.keymap.set("n", "<leader>rn", ":IncRename ")
+
+vim.keymap.set("n", "<leader>rn", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })
+
+require("inc_rename").setup({
+  input_buffer_type = "snacks",
+})
